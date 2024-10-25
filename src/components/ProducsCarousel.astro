@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import OneTouchBlack from '../img/products/oneTouchBlack.png';
+import PevaDiverse from '../img/products/pevaDiverse.png';
+import PevaLinSpecial from '../img/products/pevaLinSpecial.png';
+import PevalinWipes from '../img/products/pevalinWipes.png';
+import PevaPerm from '../img/products/pevaPerm.png';
+import Pevaplus from '../img/products/pevaplus.png';
+import PevaPremium from '../img/products/pevaPremium.png';
+import Pevasan from '../img/products/pevasan.png';
+import PevaSpender from '../img/products/pevaSpender.png';
+import PevaSpendersystem from '../img/products/pevaSpendersystem.png';
+import Pevastar from '../img/products/pevastar.png';
+import Pevasun from '../img/products/pevasun.png';
+import VoorMatec from '../img/products/voorMatec.png';
+
+const products = [
+  { src: OneTouchBlack, alt: 'One Touch Black Product' },
+  { src: PevaDiverse, alt: 'Peva Diverse Product' },
+  { src: PevaLinSpecial, alt: 'Peva Lin Special Product' },
+  { src: PevalinWipes, alt: 'Pevalin Wipes Product' },
+  { src: PevaPerm, alt: 'Peva Perm Product' },
+  { src: Pevaplus, alt: 'Pevaplus Product' },
+  { src: PevaPremium, alt: 'Peva Premium Product' },
+  { src: Pevasan, alt: 'Pevasan Product' },
+  { src: PevaSpender, alt: 'Peva Spender Product' },
+  { src: PevaSpendersystem, alt: 'Peva Spendersystem Product' },
+  { src: Pevastar, alt: 'Pevastar Product' },
+  { src: Pevasun, alt: 'Pevasun Product' },
+  { src: VoorMatec, alt: 'Voor Matec Product' },
+];
+---
+
+<div class="relative mb-8 overflow-hidden">
+  <div class="carousel-inner flex transition-transform">
+    {products.map(product => (
+      <div class="carousel-slide shrink-0 grow-0 basis-full">
+        <Image
+          src={product.src}
+          alt={product.alt}
+          class="h-64 w-full rounded-lg object-contain"
+        />
+      </div>
+    ))}
+  </div>
+  <button class="carousel-button prev absolute left-1 top-2/4 z-10 -translate-y-2/4" aria-label="Vorig product">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <button class="carousel-button next absolute right-1 top-2/4 z-10 -translate-y-2/4" aria-label="Volgend product">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselInner = document.querySelector('.carousel-inner');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevButton = document.querySelector('.carousel-button.prev');
+  const nextButton = document.querySelector('.carousel-button.next');
+
+  let currentSlide = 0;
+
+  if (
+    !carouselInner
+    || !slides.length
+    || !prevButton
+    || !nextButton
+  ) {
+    console.error('One or more carousel elements not found');
+    return;
+  }
+
+  function goToSlide(n: number) {
+    if (carouselInner) {
+      currentSlide = (n + slides.length) % slides.length;
+      (carouselInner as HTMLElement).style.transform
+        = `translateX(-${currentSlide * 100}%)`;
+    }
+  }
+
+  prevButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    goToSlide(currentSlide - 1);
+  });
+
+  nextButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    goToSlide(currentSlide + 1);
+  });
+});
+</script>
+
+<style>
+  .dot {
+    @apply w-2 h-2 rounded-full bg-gray-400 mx-1 cursor-pointer;
+  }
+
+  .dot.active {
+    @apply bg-blue-500;
+  }
+</style>
