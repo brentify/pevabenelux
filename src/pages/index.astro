@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 
 import ProducsCarousel from '../components/ProducsCarousel.astro';
 
+import background from '../img/background.jpg';
 import logoPaulVoormann from '../img/logoPaulVoormannFullBlue.png';
 import logoPevaBeneluxGreen from '../img/logoPevaBeneluxFullGreen.png';
 ---
@@ -10,26 +11,22 @@ import logoPevaBeneluxGreen from '../img/logoPevaBeneluxFullGreen.png';
 <!doctype html>
 <html lang="nl">
   <head>
-    <meta name="robots" content="noindex,nofollow" />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
     <title>
-      Peva Benelux - Officiële Benelux Importeur van Paul Voormann Producten
+      Huidbescherming, Huidverzorging en Reiniging - Pevabenelux
     </title>
     <meta
       name="description"
-      content="Peva Benelux is de officiële importeur van Paul Voormann huidverzorgings- en reinigingsproducten voor de Benelux. Ontdek ons assortiment van hoogwaardige producten voor professioneel gebruik."
+      content="Pevabenelux is de officiële importeur van Paul Voormann huidverzorgings- en reinigingsproducten voor de Benelux. Ontdek ons assortiment van hoogwaardige producten voor professioneel gebruik."
     />
-    <meta
-      name="keywords"
-      content="Peva Benelux, Paul Voormann, huidverzorging, reinigingsproducten, Benelux importeur"
-    />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href="https://www.pevabenelux.nl/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
   </head>
 
-  <body class="flex h-screen items-center justify-center">
+  <body class="flex h-screen items-center justify-center bg-cover bg-center bg-no-repeat" style={`background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(${background.src})`}>
     <div class="w-full max-w-2xl rounded-lg bg-white p-8 shadow-xl">
       <header class="mb-8 grid grid-cols-2 gap-10">
         <Image
@@ -45,7 +42,7 @@ import logoPevaBeneluxGreen from '../img/logoPevaBeneluxFullGreen.png';
       </header>
 
       <h1 class="mb-8 text-center text-4xl font-bold">
-        Officiële Benelux Importeur
+        Officiële Benelux Importeur van Paul Voormann Producten
       </h1>
 
       <ProducsCarousel />
@@ -55,7 +52,7 @@ import logoPevaBeneluxGreen from '../img/logoPevaBeneluxFullGreen.png';
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <a
             href="mailto:info@pevabenelux.nl"
-            class="text-voormann-blue hover:underline"
+            class="text-blue-300 hover:underline"
           >
             info@pevabenelux.nl
           </a>
@@ -83,5 +80,28 @@ import logoPevaBeneluxGreen from '../img/logoPevaBeneluxFullGreen.png';
         </a>
       </div>
     </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Pevabenelux",
+        "url": "https://www.pevabenelux.nl",
+        "logo": "https://www.pevabenelux.nl/logo.png",
+        "description": "Officiële Benelux Importeur van Paul Voormann huidverzorgings- en reinigingsproducten",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Straatnaam 53",
+          "addressLocality": "City",
+          "postalCode": "1234AB",
+          "addressCountry": "NL"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+31-6-55555555",
+          "contactType": "customer service",
+          "email": "info@pevabenelux.nl"
+        }
+      }
+    </script>
   </body>
 </html>
